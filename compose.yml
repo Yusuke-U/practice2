@@ -10,7 +10,20 @@ services:
     stdin_open: true
     restart: always
     volumes:
-      - ./:/sample1
+      - ./sample1:/sample1
+      - /tmp/.X11-unix:/tmp/.X11-unix # GUI
+      - /mnt/wslg:/mnt/wslg    
+  sample2:
+    container_name: sample2
+    build:
+      context: .
+      dockerfile: docker/sample2/Dockerfile
+    ports:
+      - "${SAMPLE2_PORT}:${SAMPLE2_PORT}"
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./sample2:/sample2
       - /tmp/.X11-unix:/tmp/.X11-unix # GUI
       - /mnt/wslg:/mnt/wslg
-    
