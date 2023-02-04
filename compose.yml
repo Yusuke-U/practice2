@@ -1,0 +1,16 @@
+services:
+  sample1:
+    container_name: sample1
+    build:
+      context: .
+      dockerfile: docker/sample1/Dockerfile
+    ports:
+      - "${SAMPLE1_PORT}:${SAMPLE1_PORT}"
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./:/sample1
+      - /tmp/.X11-unix:/tmp/.X11-unix # GUI
+      - /mnt/wslg:/mnt/wslg
+    
